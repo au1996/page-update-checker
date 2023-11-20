@@ -1,0 +1,35 @@
+{
+  "name": "page-update-checker",
+  "version": "0.0.1",
+  "description": "A page update detector",
+  "main": "dist/page-update-checker.umd.js",
+  "module": "dist/page-update-checker.es.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "keywords": [
+    "page",
+    "update",
+    "checker"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/au1996/page-update-checker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/au1996/page-update-checker/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.3"
+  }
+}

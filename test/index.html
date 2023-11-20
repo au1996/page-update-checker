@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../dist/page-update-checker.umd.js"></script>
+    <script>
+      const pageUpdateChecker = new PageUpdateChecker()
+      pageUpdateChecker.init({
+        duration: 1000 * 2, // 2s
+        path: `${location.origin}${location.pathname}`, // 要检测的页面路径
+        test: true, // 测试模式 会每隔duration秒调用函数 on 一次
+        on: () => {
+          console.log('页面有更新')
+        }, // 页面更新时的回调
+      })
+    </script>
+  </body>
+</html>
