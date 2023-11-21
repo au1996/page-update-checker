@@ -1,6 +1,6 @@
 {
   "name": "page-update-checker",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A page update detector",
   "main": "dist/page-update-checker.umd.js",
   "module": "dist/page-update-checker.es.js",

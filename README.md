@@ -34,7 +34,7 @@ pageUpdateChecker.init({
 <!DOCTYPE html>
 <html lang="en">
   <body>
-    <script src="https://unpkg.com/page-update-checker@0.0.1/dist/page-update-checker.umd.js"></script>
+    <script src="https://unpkg.com/page-update-checker@0.0.3/dist/page-update-checker.umd.js"></script>
     <script>
       const pageUpdateChecker = new PageUpdateChecker()
       pageUpdateChecker.init({
