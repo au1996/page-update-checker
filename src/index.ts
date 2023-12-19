@@ -13,6 +13,7 @@ class PageUpdateChecker {
   path: string
   scriptReg: RegExp
   lastScripts: string[]
+  pause: boolean
   test: boolean
   on: () => void
 
@@ -21,12 +22,9 @@ class PageUpdateChecker {
     this.path = '/'
     this.scriptReg = /<script.*src="([^"]+)"/gm
     this.lastScripts = []
+    this.pause = false
     this.test = false
     this.on = () => {
-      if (typeof window === 'undefined' || !window.confirm) {
-        console.log('页面已更新')
-        return
-      }
       const isOk = window.confirm('页面已更新，是否刷新？')
       if (!isOk) return
       location.reload()
@@ -47,18 +45,28 @@ class PageUpdateChecker {
       if (option.test) this.test = option.test
       if (option.on) this.on = option.on
       this.autoRefresh()
+      window.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          this.pause = true
+        } else {
+          this.pause = false
+          this.autoRefresh()
+        }
+      })
     } catch (error) {
       console.error(error)
     }
   }
 
   autoRefresh() {
+    // 暂停检测
     setTimeout(async () => {
+      if (this.pause) return
+
       const willUpdate = await this.needUpdate()
       if (willUpdate || this.test) {
         this.on()
       }
-
       this.autoRefresh()
     }, this.duration)
   }
@@ -101,7 +109,7 @@ class PageUpdateChecker {
 }
 
 if (typeof window !== 'undefined') {
-  ;(window as any).PageUpdateChecker = PageUpdateChecker
+  window.PageUpdateChecker = PageUpdateChecker
 }
 
 export default PageUpdateChecker

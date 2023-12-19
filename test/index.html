@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>6秒后顶部提示页面更新</h1>
+    <h1>2秒后控制台打印: 页面更新</h1>
     <script src="../dist/page-update-checker.umd.js"></script>
     <script>
       const pageUpdateChecker = new PageUpdateChecker()
@@ -14,6 +14,9 @@
         duration: 1000 * 2,
         path: `${location.origin}${location.pathname}`,
         test: true,
+        on: () => {
+          console.log('页面更新')
+        },
       })
     </script>
   </body>
